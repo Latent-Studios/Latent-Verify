@@ -1,0 +1,1466 @@
+<!doctype html>
+<!--
+ARTIFACT: LATENT_VERIFY_WORKSTATION_V1_1_1
+CLASS: static_github_io_verification_workstation
+OWNER: Kevin Flint / Latent Studios
+VERSION: 1.1.1
+BUILD STATE:
+  [x] Static GitHub.io-compatible workstation
+  [x] Local-only execution
+  [x] JSON / CSV / TXT ingestion
+  [x] Canonicalization
+  [x] Exact / structural / typed / schema verification profiles
+  [x] Assertion contract
+  [x] MATCH / DIFFERENT / REVIEW_REQUIRED / HALT
+  [x] SHA-256 evidence receipt
+  [x] IndexedDB local ledger
+  [x] Receipt verification
+  [x] Evidence export
+  [x] Certificate binding viewer
+  [x] Reference fixtures
+  [x] Commercial inquiry surface
+  [x] Authorization-accounting authority plane
+  [x] Authority request field allowlist
+  [x] Optional authoritative certificate request by opaque receipt hash
+  [x] Validation-data / authority-metadata plane separation
+  [x] Structural and typed comparison semantics mechanically separated
+  [x] Authority action-specific envelope validation
+  [x] Canonical HTML document envelope for workstation and exported reports
+  [x] Raw-source twin for mobile-safe copying
+PLACEHOLDER MANIFEST: NONE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Latent Verify — deterministic baseline/candidate system verification with local evidence receipts.">
+<meta name="license" content="LicenseRef-Latent-Verify-Public-Inspection-Commercial-Boundary-1.0">
+<meta name="copyright" content="Copyright (c) 2026 Kevin Flint / Latent Studios">
+<meta name="robots" content="index,follow">
+<link rel="license" href="LICENSE">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Latent Verify","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","softwareVersion":"1.1.1","publisher":{"@type":"Organization","name":"Latent Studios"}}</script>
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; connect-src 'self'; img-src 'self' data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Latent Verify">
+<meta property="og:description" content="Deterministic System Verification — compare a baseline against a candidate, localize defined differences, and preserve machine-verifiable evidence.">
+<title>Latent Verify — Deterministic System Verification</title>
+<style>
+:root{
+  --bg:#071019;--panel:#0c1722;--card:#101e2b;--line:#22374a;--text:#edf6ff;
+  --muted:#9db2c5;--cyan:#71d7ff;--green:#74e39a;--red:#ff7d7d;--amber:#f1cc73;
+  --violet:#b7a1ff;--soft:#0a1420;
+}
+*{box-sizing:border-box;min-width:0}
+html{color-scheme:dark;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:var(--text);background:#0b1620;border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+button,select,input{min-height:42px}
+button{cursor:pointer}
+button:hover{border-color:var(--cyan)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+button.primary{border-color:var(--cyan);font-weight:800}
+button.danger{border-color:var(--red)}
+a{color:var(--cyan)}
+main{width:100%;max-width:1480px;margin:auto;padding:10px;display:grid;gap:10px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.grid{display:grid;gap:9px}
+.cards{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spread{justify-content:space-between}
+.grow{flex:1 1 auto}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+.mono,pre,code,textarea.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.kicker{color:var(--cyan);font-weight:900;letter-spacing:.07em}
+.badge{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:.82rem}
+.badge.good{color:var(--green);border-color:var(--green)}
+.badge.bad{color:var(--red);border-color:var(--red)}
+.badge.warn{color:var(--amber);border-color:var(--amber)}
+.badge.violet{color:var(--violet);border-color:var(--violet)}
+h1,h2,h3,h4{margin:.2em 0 .55em}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button.active{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 0 1px var(--cyan) inset}
+textarea{width:100%;min-height:180px;resize:vertical;line-height:1.45}
+textarea.smallbox{min-height:110px}
+pre{white-space:pre-wrap;word-break:break-word;line-height:1.45;background:#06101a;border:1px solid var(--line);border-radius:10px;padding:11px;overflow:auto;max-height:58vh}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:end}
+.toolbar label{display:grid;gap:4px}
+.kv{display:grid;grid-template-columns:minmax(150px,.35fr) minmax(0,1fr);gap:5px 10px;padding:5px 0;border-bottom:1px solid rgba(34,55,74,.6)}
+.kv:last-child{border-bottom:0}
+.resultHero{display:grid;place-items:center;min-height:160px;text-align:center;border:1px solid var(--line);border-radius:14px;background:#06101a}
+.resultState{font-weight:1000;font-size:clamp(2rem,6vw,4.5rem);letter-spacing:.06em}
+.resultState.good{color:var(--green)}
+.resultState.bad{color:var(--red)}
+.resultState.warn{color:var(--amber)}
+.dropzone{border:1px dashed var(--line);border-radius:12px;padding:12px;background:#08131d}
+.dropzone.drag{border-color:var(--cyan)}
+.diffTable{width:100%;border-collapse:collapse;font-size:.9rem}
+.diffTable th,.diffTable td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top;word-break:break-word}
+.diffTable th{color:var(--cyan);position:sticky;top:0;background:var(--card)}
+.tableWrap{overflow:auto;max-height:520px;border:1px solid var(--line);border-radius:10px}
+.hidden{display:none!important}
+.notice{border-left:3px solid var(--cyan);padding-left:11px}
+.warnline{border-left-color:var(--amber)}
+.goodline{border-left-color:var(--green)}
+.badline{border-left-color:var(--red)}
+.stat{font-size:1.5rem;font-weight:900}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.footer{color:var(--muted);font-size:.82rem;text-align:center;padding:18px}
+@media(max-width:900px){
+  main{padding:7px}
+  .split{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  .toolbar{align-items:stretch}
+  .toolbar label{flex-basis:100%}
+  textarea{min-height:150px}
+}
+</style>
+</head>
+<body>
+<noscript><main><section class="panel"><span class="badge bad">HALT</span> JavaScript is required for Latent Verify.</section></main></noscript>
+<main>
+
+<section class="panel">
+  <div class="row spread">
+    <div>
+      <div class="kicker">LATENT STUDIOS · DETERMINISTIC VERIFICATION</div>
+      <h1>Latent Verify</h1>
+      <div class="muted">Compare a known baseline against a candidate, localize defined differences, and preserve the result as machine-verifiable evidence.</div>
+    </div>
+    <div class="row">
+      <span class="badge violet">V1.1.1</span>
+      <span class="badge" id="netBadge">LOCAL DATA · AUTHORITY OPTIONAL</span>
+      <span class="badge" id="dbBadge">LEDGER…</span>
+      <span class="badge" id="statusBadge">IDLE</span>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="tabs" id="tabs">
+    <button data-tab="verify" class="active">Verify</button>
+    <button data-tab="contract">Contract</button>
+    <button data-tab="evidence">Evidence</button>
+    <button data-tab="ledger">Ledger</button>
+    <button data-tab="authority">Authority</button>
+    <button data-tab="certificate">Certificate</button>
+    <button data-tab="reference">Reference</button>
+  </div>
+</section>
+
+<section id="tab-verify" class="tabPage">
+  <section class="panel">
+    <div class="row spread">
+      <div>
+        <div class="kicker">VERIFICATION PROFILE</div>
+        <h2>Define the comparison surface</h2>
+      </div>
+      <div class="toolbar">
+        <label>Profile
+          <select id="profileSelect">
+            <option value="exact">Exact parity</option>
+            <option value="structural">Structural parity</option>
+            <option value="typed">Typed parity</option>
+            <option value="schema">Schema parity</option>
+          </select>
+        </label>
+        <button id="loadMatchSample">Load match fixture</button>
+        <button id="loadDiffSample">Load difference fixture</button>
+      </div>
+    </div>
+    <div class="notice small">
+      Baseline, candidate, differences, assertions, and engineering data remain in this browser. Optional network use is restricted to authorization accounting and certificate issuance metadata.
+    </div>
+  </section>
+
+  <section class="split">
+    <section class="panel dropzone" data-side="baseline">
+      <div class="row spread">
+        <div><div class="kicker">BASELINE</div><h2>Authoritative reference</h2></div>
+        <span class="badge" id="baselineType">UNSET</span>
+      </div>
+      <div class="toolbar">
+        <label>Load file
+          <input id="baselineFile" type="file" accept=".json,.csv,.txt,.log,text/plain,application/json,text/csv">
+        </label>
+        <button data-clear="baseline">Clear</button>
+      </div>
+      <textarea id="baselineText" class="code" spellcheck="false" placeholder="Paste JSON, CSV, or text here."></textarea>
+      <div class="small muted" id="baselineMeta">No input loaded.</div>
+    </section>
+
+    <section class="panel dropzone" data-side="candidate">
+      <div class="row spread">
+        <div><div class="kicker">CANDIDATE</div><h2>Verification target</h2></div>
+        <span class="badge" id="candidateType">UNSET</span>
+      </div>
+      <div class="toolbar">
+        <label>Load file
+          <input id="candidateFile" type="file" accept=".json,.csv,.txt,.log,text/plain,application/json,text/csv">
+        </label>
+        <button data-clear="candidate">Clear</button>
+      </div>
+      <textarea id="candidateText" class="code" spellcheck="false" placeholder="Paste JSON, CSV, or text here."></textarea>
+      <div class="small muted" id="candidateMeta">No input loaded.</div>
+    </section>
+  </section>
+
+  <section class="panel">
+    <div class="row spread">
+      <div>
+        <div class="kicker">EXECUTION</div>
+        <h2>Run deterministic verification</h2>
+      </div>
+      <div class="row">
+        <button id="validateContract">Validate contract</button>
+        <button id="verifyBtn" class="primary">VERIFY</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="resultHero">
+      <div>
+        <div id="resultState" class="resultState">IDLE</div>
+        <div id="resultSummary" class="muted">Load a baseline and candidate to begin.</div>
+      </div>
+    </div>
+    <div class="cards grid" style="margin-top:10px">
+      <div class="card"><div class="muted small">Assertions</div><div class="stat" id="statAssertions">0</div></div>
+      <div class="card"><div class="muted small">Passed</div><div class="stat" id="statPassed">0</div></div>
+      <div class="card"><div class="muted small">Differences</div><div class="stat" id="statDiffs">0</div></div>
+      <div class="card"><div class="muted small">Review</div><div class="stat" id="statReview">0</div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="row spread">
+      <div><div class="kicker">DIFFERENCE EXPLORER</div><h2>Observed comparison events</h2></div>
+      <div class="toolbar">
+        <label>Filter
+          <input id="diffFilter" type="search" placeholder="/orders/3817/tax">
+        </label>
+      </div>
+    </div>
+    <div class="tableWrap">
+      <table class="diffTable">
+        <thead><tr><th>Class</th><th>Path</th><th>Baseline</th><th>Candidate</th><th>Disposition</th></tr></thead>
+        <tbody id="diffBody"><tr><td colspan="5" class="muted">No verification result.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+<section id="tab-contract" class="tabPage hidden">
+  <section class="panel">
+    <div class="row spread">
+      <div><div class="kicker">ASSERTION CONTRACT</div><h2>Bound the meaning of the result</h2></div>
+      <div class="row">
+        <button id="resetContract">Reset default</button>
+        <button id="validateContract2">Validate</button>
+      </div>
+    </div>
+    <textarea id="contractText" class="code" spellcheck="false"></textarea>
+    <pre id="contractStatus">Not yet validated.</pre>
+  </section>
+  <section class="panel">
+    <div class="kicker">PATH RULES</div>
+    <div class="grid cards">
+      <div class="card"><b>ignore_paths</b><div class="small muted">Excluded from comparison.</div></div>
+      <div class="card"><b>permitted_differences</b><div class="small muted">Observed differences remain non-failing.</div></div>
+      <div class="card"><b>prohibited_differences</b><div class="small muted">Matching paths produce DIFFERENT.</div></div>
+      <div class="card"><b>review_paths</b><div class="small muted">Matching differences produce REVIEW_REQUIRED.</div></div>
+      <div class="card"><b>required_differences</b><div class="small muted">A matching difference must occur; absence produces DIFFERENT.</div></div>
+    </div>
+  </section>
+</section>
+
+<section id="tab-evidence" class="tabPage hidden">
+  <section class="panel">
+    <div class="row spread">
+      <div><div class="kicker">EVIDENCE</div><h2>Verification receipt</h2></div>
+      <div class="row">
+        <button id="exportEvidence">Export evidence JSON</button>
+        <button id="exportReport">Export report HTML</button>
+        <button id="verifyReceiptBtn">Verify receipt</button>
+      </div>
+    </div>
+    <pre id="receiptView">No receipt generated.</pre>
+  </section>
+  <section class="panel">
+    <div class="kicker">RECEIPT VERIFICATION</div>
+    <pre id="receiptVerifyStatus">No receipt loaded.</pre>
+  </section>
+</section>
+
+<section id="tab-ledger" class="tabPage hidden">
+  <section class="panel">
+    <div class="row spread">
+      <div><div class="kicker">LOCAL LEDGER</div><h2>IndexedDB verification history</h2></div>
+      <div class="row">
+        <button id="refreshLedger">Refresh</button>
+        <button id="clearLedger" class="danger">Clear local ledger</button>
+      </div>
+    </div>
+    <div id="ledgerList" class="grid"><div class="muted">Ledger not loaded.</div></div>
+  </section>
+</section>
+
+
+<section id="tab-authority" class="tabPage hidden">
+  <section class="panel">
+    <div class="row spread">
+      <div>
+        <div class="kicker">AUTHORIZATION ACCOUNTING</div>
+        <h2>License and entitlement authority plane</h2>
+      </div>
+      <span id="authorityBadge" class="badge warn">AUTHORITY OFFLINE</span>
+    </div>
+
+    <div class="notice goodline">
+      Customer validation payloads remain local. Authority requests are generated from an explicit metadata allowlist and cannot serialize baseline, candidate, differences, assertions, source code, transaction contents, or evidence bodies.
+    </div>
+
+    <div class="grid cards" style="margin-top:10px">
+      <div class="card">
+        <div class="muted small">Account / license ID</div>
+        <input id="authorityAccountId" type="text" autocomplete="off" placeholder="LV-LICENSE-...">
+      </div>
+      <div class="card">
+        <div class="muted small">Profile</div>
+        <div class="stat mono" id="authorityProfile">exact / 1.0</div>
+      </div>
+      <div class="card">
+        <div class="muted small">Remaining entitlement</div>
+        <div class="stat" id="authorityRemaining">UNKNOWN</div>
+      </div>
+      <div class="card">
+        <div class="muted small">Expiry</div>
+        <div class="stat" id="authorityExpiry" style="font-size:1rem">UNKNOWN</div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:10px">
+      <button id="authorizeAccessBtn">Authorize access</button>
+      <button id="requestCertificateBtn" class="primary">Request authoritative certificate</button>
+    </div>
+
+    <hr>
+
+    <div class="kicker">NETWORK ENVELOPE</div>
+    <pre id="authorityEnvelopeView">No authority request generated.</pre>
+
+    <div class="kicker">AUTHORITY RESPONSE</div>
+    <pre id="authorityResponseView">No authority response.</pre>
+  </section>
+
+  <section class="panel">
+    <div class="kicker">DESIGN INVARIANT</div>
+    <pre>LOCAL VALIDATION PLANE
+baseline                LOCAL ONLY
+candidate               LOCAL ONLY
+differences             LOCAL ONLY
+assertions              LOCAL ONLY
+engineering details     LOCAL ONLY
+receipt body            LOCAL ONLY
+
+AUTHORITY ACCOUNTING PLANE
+account/license ID      ALLOWED
+profile ID/version      ALLOWED
+authorized action       ALLOWED
+timestamp               ALLOWED
+nonce                   ALLOWED
+opaque receipt SHA-256  CERTIFICATE REQUEST ONLY
+entitlement response    ALLOWED
+
+No local validation object is passed to the authority request serializer.</pre>
+  </section>
+</section>
+
+<section id="tab-certificate" class="tabPage hidden">
+  <section class="panel">
+    <div class="row spread">
+      <div>
+        <div class="kicker">CERTIFICATE</div>
+        <h2>Commercial verification authority</h2>
+      </div>
+      <span id="certBadge" class="badge warn">NOT ISSUED</span>
+    </div>
+    <div class="notice warnline">
+      Local execution and local receipts are not a Latent Studios commercial verification certificate. A certificate must bind to an issued verification record and matching receipt digest.
+    </div>
+    <hr>
+    <div class="toolbar">
+      <label>Load certificate JSON
+        <input id="certificateFile" type="file" accept=".json,application/json">
+      </label>
+      <button id="verifyCertificate">Verify binding</button>
+      <button id="requestCertificateFromCertTab">Request issuance</button>
+      <a href="COMMERCIAL_INQUIRY.md">Commercial inquiry</a>
+    </div>
+    <textarea id="certificateText" class="code smallbox" spellcheck="false" placeholder='{"certificate_id":"...","receipt_sha256":"..."}'></textarea>
+    <pre id="certificateStatus">No certificate loaded.</pre>
+  </section>
+</section>
+
+<section id="tab-reference" class="tabPage hidden">
+  <section class="panel">
+    <div class="kicker">REFERENCE</div>
+    <h2>Execution semantics</h2>
+    <div class="grid cards">
+      <div class="card"><b>EXACT</b><div class="small muted">Canonical structure, types, and values must match except contract dispositions.</div></div>
+      <div class="card"><b>STRUCTURAL</b><div class="small muted">Object keys, array dimensions, and container topology must match. Scalar value changes are not evaluated.</div></div>
+      <div class="card"><b>TYPED</b><div class="small muted">Structural topology and scalar types must match. Scalar values are not evaluated.</div></div>
+      <div class="card"><b>SCHEMA</b><div class="small muted">Candidate must conform to a schema inferred from the baseline shape and types.</div></div>
+    </div>
+  </section>
+  <section class="panel">
+    <div class="kicker">TERMINAL STATES</div>
+    <div class="kv"><b>MATCH</b><span>All active assertions and contract requirements satisfied.</span></div>
+    <div class="kv"><b>DIFFERENT</b><span>One or more defined failing differences or missing required differences detected.</span></div>
+    <div class="kv"><b>REVIEW_REQUIRED</b><span>Differences intersect review-designated paths.</span></div>
+    <div class="kv"><b>HALT</b><span>Input, contract, parsing, or execution invariant prevented valid completion.</span></div>
+  </section>
+  <section class="panel">
+    <div class="kicker">LOCAL EXECUTION</div>
+    <pre>validation_data_execution = BROWSER_LOCAL
+validation_payload_network = NONE
+authority_network = OPTIONAL_SAME_ORIGIN
+authority_protocol = LV-AUTH-1
+authority_payload = ALLOWLISTED_METADATA_ONLY
+ledger = INDEXEDDB
+hash = SHA-256 via Web Crypto
+backend_required_for_local_verification = FALSE
+authority_service_required_for_certificate_issuance = TRUE
+document_envelope = DOCTYPE + HTML + HEAD + BODY + SCRIPT + /BODY + /HTML</pre>
+  </section>
+</section>
+
+<div class="footer">
+  Latent Verify V1.1.1 · Kevin Flint / Latent Studios · Local deterministic verification workstation · optional authorization-accounting authority plane
+</div>
+</main>
+
+<script>
+"use strict";
+
+const VERSION = "1.1.1";
+const DB_NAME = "latent_verify_v1";
+const DB_STORE = "runs";
+
+const AUTHORITY_CONFIG = Object.freeze({
+  enabled: false,
+  base_path: "/api/latent-authority/v1",
+  timeout_ms: 10000,
+  access_authorization_required: false
+});
+
+const AUTHORITY_REQUEST_KEYS = Object.freeze([
+  "protocol",
+  "action",
+  "account_license_id",
+  "profile_id",
+  "profile_version",
+  "timestamp",
+  "nonce",
+  "receipt_sha256"
+]);
+
+const AUTHORITY_FORBIDDEN_FIELD_NAMES = Object.freeze([
+  "baseline",
+  "candidate",
+  "differences",
+  "diffs",
+  "assertions",
+  "source",
+  "source_code",
+  "payload",
+  "input",
+  "output",
+  "evidence",
+  "receipt_body",
+  "contract_body",
+  "transactions",
+  "records",
+  "values"
+]);
+
+
+const DEFAULT_CONTRACT = {
+  contract_id: "LV-CONTRACT-DEFAULT-V1",
+  version: "1.0",
+  subject: {
+    system: "UNSPECIFIED",
+    component: "UNSPECIFIED",
+    purpose: "baseline_candidate_verification"
+  },
+  comparison: {
+    profile: "exact",
+    array_order: "preserve"
+  },
+  ignore_paths: [],
+  permitted_differences: [],
+  prohibited_differences: [],
+  review_paths: [],
+  required_differences: [],
+  evidence_policy: {
+    receipt_required: true,
+    ledger_write: true
+  }
+};
+
+const SAMPLE_MATCH_BASELINE = {
+  system:"invoice-engine",
+  version:"1.0",
+  invoices:[
+    {id:1001,subtotal:100,tax:8.25,total:108.25,status:"SETTLED"},
+    {id:1002,subtotal:45,tax:3.71,total:48.71,status:"SETTLED"}
+  ]
+};
+const SAMPLE_MATCH_CANDIDATE = JSON.parse(JSON.stringify(SAMPLE_MATCH_BASELINE));
+
+const SAMPLE_DIFF_CANDIDATE = {
+  system:"invoice-engine",
+  version:"1.1",
+  invoices:[
+    {id:1001,subtotal:100,tax:8.26,total:108.26,status:"SETTLED"},
+    {id:1002,subtotal:"45",tax:3.71,total:48.71,status:"PENDING"}
+  ]
+};
+
+let lastRun = null;
+let db = null;
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+function nowIso(){ return new Date().toISOString(); }
+
+function stableClone(value){
+  if(Array.isArray(value)) return value.map(stableClone);
+  if(value && typeof value === "object"){
+    const out = {};
+    for(const k of Object.keys(value).sort()) out[k] = stableClone(value[k]);
+    return out;
+  }
+  if(typeof value === "number"){
+    if(Object.is(value, -0)) return 0;
+    if(Number.isNaN(value)) return "NaN";
+    if(value === Infinity) return "Infinity";
+    if(value === -Infinity) return "-Infinity";
+  }
+  return value;
+}
+
+function canonicalString(value){
+  return JSON.stringify(stableClone(value));
+}
+
+async function sha256Text(text){
+  const bytes = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+function detectFormat(text, filename=""){
+  const ext = (filename.split(".").pop() || "").toLowerCase();
+  if(ext === "json") return "JSON";
+  if(ext === "csv") return "CSV";
+  const t = text.trim();
+  if((t.startsWith("{") && t.endsWith("}")) || (t.startsWith("[") && t.endsWith("]"))) return "JSON";
+  if(t.includes("\n") && t.split("\n")[0].includes(",")) return "CSV";
+  return "TEXT";
+}
+
+function parseCSV(text){
+  const rows = [];
+  let row=[], field="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(c === '"'){
+      if(q && n === '"'){ field+='"'; i++; }
+      else q=!q;
+    }else if(c === "," && !q){
+      row.push(field); field="";
+    }else if((c === "\n" || c === "\r") && !q){
+      if(c === "\r" && n === "\n") i++;
+      row.push(field); field="";
+      if(row.some(x=>x.length)) rows.push(row);
+      row=[];
+    }else field += c;
+  }
+  row.push(field);
+  if(row.some(x=>x.length)) rows.push(row);
+  if(!rows.length) return [];
+  const headers = rows[0].map((h,i)=>h.trim() || `col_${i+1}`);
+  return rows.slice(1).map(r=>{
+    const o={};
+    headers.forEach((h,i)=>o[h]=coerceScalar(r[i] ?? ""));
+    return o;
+  });
+}
+
+function coerceScalar(v){
+  const s = String(v).trim();
+  if(s === "") return "";
+  if(s === "true") return true;
+  if(s === "false") return false;
+  if(s === "null") return null;
+  if(/^[-+]?\d+(\.\d+)?([eE][-+]?\d+)?$/.test(s)){
+    const n = Number(s);
+    if(Number.isFinite(n)) return n;
+  }
+  return v;
+}
+
+function parseInput(text, filename=""){
+  const format = detectFormat(text, filename);
+  if(format === "JSON") return {format, value: JSON.parse(text)};
+  if(format === "CSV") return {format, value: parseCSV(text)};
+  return {format, value: text.replace(/\r\n/g,"\n")};
+}
+
+function typeOf(v){
+  if(v === null) return "null";
+  if(Array.isArray(v)) return "array";
+  return typeof v;
+}
+
+function joinPath(base, key){
+  if(base === "") return "/" + String(key).replaceAll("~","~0").replaceAll("/","~1");
+  return base + "/" + String(key).replaceAll("~","~0").replaceAll("/","~1");
+}
+
+function pathMatches(pattern, path){
+  if(pattern === path) return true;
+  const ps = String(pattern).split("/").filter(Boolean);
+  const xs = String(path).split("/").filter(Boolean);
+  let i=0,j=0;
+  while(i<ps.length && j<xs.length){
+    if(ps[i] === "**") return true;
+    if(ps[i] !== "*" && ps[i] !== xs[j]) return false;
+    i++; j++;
+  }
+  if(i === ps.length && j === xs.length) return true;
+  if(i === ps.length-1 && ps[i] === "**") return true;
+  return false;
+}
+
+function inAny(path, patterns){
+  return (patterns || []).some(p=>pathMatches(p,path));
+}
+
+function disposition(path, contract){
+  if(inAny(path, contract.ignore_paths)) return "IGNORED";
+  if(inAny(path, contract.prohibited_differences)) return "PROHIBITED";
+  if(inAny(path, contract.review_paths)) return "REVIEW";
+  if(inAny(path, contract.permitted_differences)) return "PERMITTED";
+  return "UNPERMITTED";
+}
+
+function preview(v){
+  let s;
+  try{s = typeof v === "string" ? v : JSON.stringify(v);}
+  catch{ s=String(v); }
+  if(s === undefined) s = "undefined";
+  return s.length > 180 ? s.slice(0,177)+"..." : s;
+}
+
+function compareValues(a,b,profile,contract,path="",diffs=[]){
+  const currentPath=path || "/";
+  if(inAny(currentPath, contract.ignore_paths)) return diffs;
+
+  const ta=typeOf(a), tb=typeOf(b);
+  const aContainer=ta==="array" || ta==="object";
+  const bContainer=tb==="array" || tb==="object";
+
+  if(profile==="structural"){
+    if(aContainer || bContainer){
+      if(ta!==tb){
+        diffs.push({class:"STRUCTURE",path:currentPath,baseline:ta,candidate:tb,disposition:disposition(currentPath,contract)});
+        return diffs;
+      }
+    }else{
+      return diffs;
+    }
+  }else if(ta!==tb){
+    diffs.push({class:"TYPE",path:currentPath,baseline:a,candidate:b,disposition:disposition(currentPath,contract)});
+    return diffs;
+  }
+
+  if(ta==="array" && tb==="array"){
+    if(a.length!==b.length){
+      diffs.push({class:"COUNT",path:currentPath,baseline:a.length,candidate:b.length,disposition:disposition(currentPath,contract)});
+    }
+    const n=Math.max(a.length,b.length);
+    for(let i=0;i<n;i++){
+      const p=joinPath(path,i);
+      if(i>=a.length) diffs.push({class:"ADDED",path:p,baseline:undefined,candidate:b[i],disposition:disposition(p,contract)});
+      else if(i>=b.length) diffs.push({class:"MISSING",path:p,baseline:a[i],candidate:undefined,disposition:disposition(p,contract)});
+      else compareValues(a[i],b[i],profile,contract,p,diffs);
+    }
+    return diffs;
+  }
+
+  if(ta==="object" && tb==="object"){
+    const keys=[...new Set([...Object.keys(a),...Object.keys(b)])].sort();
+    for(const k of keys){
+      const p=joinPath(path,k);
+      if(!(k in a)) diffs.push({class:"ADDED",path:p,baseline:undefined,candidate:b[k],disposition:disposition(p,contract)});
+      else if(!(k in b)) diffs.push({class:"MISSING",path:p,baseline:a[k],candidate:undefined,disposition:disposition(p,contract)});
+      else compareValues(a[k],b[k],profile,contract,p,diffs);
+    }
+    return diffs;
+  }
+
+  if(profile==="structural" || profile==="typed" || profile==="schema") return diffs;
+  if(!Object.is(a,b)){
+    diffs.push({class:"VALUE",path:currentPath,baseline:a,candidate:b,disposition:disposition(currentPath,contract)});
+  }
+  return diffs;
+}
+
+function inferSchema(v){
+  const t=typeOf(v);
+  if(t === "array"){
+    const itemSchemas = v.map(inferSchema);
+    const uniq = [...new Map(itemSchemas.map(x=>[JSON.stringify(x),x])).values()];
+    return {type:"array",items:uniq.length===1?uniq[0]:{anyOf:uniq}};
+  }
+  if(t === "object"){
+    const props={};
+    for(const k of Object.keys(v).sort()) props[k]=inferSchema(v[k]);
+    return {type:"object",required:Object.keys(props),properties:props};
+  }
+  return {type:t};
+}
+
+function schemaDiff(schema, value, path="", diffs=[], contract=DEFAULT_CONTRACT){
+  const t=typeOf(value);
+  if(schema.anyOf){
+    if(!schema.anyOf.some(s=>schemaConforms(s,value))){
+      diffs.push({class:"SCHEMA",path:path||"/",baseline:schema,candidate:value,disposition:disposition(path||"/",contract)});
+    }
+    return diffs;
+  }
+  if(schema.type !== t){
+    diffs.push({class:"TYPE",path:path||"/",baseline:schema.type,candidate:t,disposition:disposition(path||"/",contract)});
+    return diffs;
+  }
+  if(schema.type === "object"){
+    for(const k of schema.required || []){
+      const p=joinPath(path,k);
+      if(!(k in value)) diffs.push({class:"MISSING",path:p,baseline:"required",candidate:undefined,disposition:disposition(p,contract)});
+      else schemaDiff(schema.properties[k],value[k],p,diffs,contract);
+    }
+    for(const k of Object.keys(value)){
+      if(!(k in (schema.properties||{}))){
+        const p=joinPath(path,k);
+        diffs.push({class:"ADDED",path:p,baseline:undefined,candidate:value[k],disposition:disposition(p,contract)});
+      }
+    }
+  }else if(schema.type === "array"){
+    for(let i=0;i<value.length;i++) schemaDiff(schema.items,value[i],joinPath(path,i),diffs,contract);
+  }
+  return diffs;
+}
+
+function schemaConforms(schema,value){
+  const d=[]; schemaDiff(schema,value,"",d,DEFAULT_CONTRACT);
+  return d.length===0;
+}
+
+function validateContractObject(c){
+  const errs=[];
+  if(!c || typeof c!=="object") errs.push("Contract must be an object.");
+  if(!c.contract_id) errs.push("contract_id is required.");
+  if(!c.version) errs.push("version is required.");
+  const arrays=["ignore_paths","permitted_differences","prohibited_differences","review_paths","required_differences"];
+  for(const k of arrays) if(!Array.isArray(c[k])) errs.push(`${k} must be an array.`);
+  return errs;
+}
+
+function getContract(){
+  const c=JSON.parse($("#contractText").value);
+  const errs=validateContractObject(c);
+  if(errs.length) throw new Error(errs.join(" "));
+  return c;
+}
+
+async function parseSide(side){
+  const text=$("#"+side+"Text").value;
+  if(!text.trim()) throw new Error(`${side} input is empty.`);
+  const file=$("#"+side+"File").files[0];
+  const filename=file?file.name:"";
+  const parsed=parseInput(text,filename);
+  const rawHash=await sha256Text(text);
+  const canonical=stableClone(parsed.value);
+  const canonicalText=canonicalString(canonical);
+  const canonicalHash=await sha256Text(canonicalText);
+  return {side,format:parsed.format,value:parsed.value,canonical,raw_text:text,raw_sha256:rawHash,canonical_sha256:canonicalHash,byte_length:new TextEncoder().encode(text).length};
+}
+
+function evaluateRequiredDifferences(diffs, contract){
+  const missing=[];
+  for(const p of contract.required_differences || []){
+    if(!diffs.some(d=>pathMatches(p,d.path))) missing.push(p);
+  }
+  return missing;
+}
+
+function deriveDecision(diffs, missingRequired){
+  const relevant=diffs.filter(d=>d.disposition!=="IGNORED");
+  if(relevant.some(d=>d.disposition==="REVIEW")) return "REVIEW_REQUIRED";
+  if(missingRequired.length) return "DIFFERENT";
+  if(relevant.some(d=>d.disposition==="PROHIBITED" || d.disposition==="UNPERMITTED")) return "DIFFERENT";
+  return "MATCH";
+}
+
+function assertionStats(diffs, missingRequired){
+  const active=diffs.filter(d=>d.disposition!=="IGNORED");
+  const failing=active.filter(d=>["PROHIBITED","UNPERMITTED"].includes(d.disposition)).length + missingRequired.length;
+  const review=active.filter(d=>d.disposition==="REVIEW").length;
+  const permitted=active.filter(d=>d.disposition==="PERMITTED").length;
+  const passed = Math.max(0, active.length + 1 - failing - review); // summary assertion + observed dispositions
+  return {assertions: active.length + missingRequired.length + 1, passed, failing, review, permitted};
+}
+
+async function buildReceipt(runCore){
+  const body = {
+    receipt_version:"LV-R1",
+    verification_id:runCore.verification_id,
+    timestamp:runCore.timestamp,
+    runtime:{id:"LATENT_VERIFY",version:VERSION},
+    profile:{id:runCore.profile,version:"1.0"},
+    baseline:{
+      format:runCore.baseline.format,
+      byte_length:runCore.baseline.byte_length,
+      raw_sha256:runCore.baseline.raw_sha256,
+      canonical_sha256:runCore.baseline.canonical_sha256
+    },
+    candidate:{
+      format:runCore.candidate.format,
+      byte_length:runCore.candidate.byte_length,
+      raw_sha256:runCore.candidate.raw_sha256,
+      canonical_sha256:runCore.candidate.canonical_sha256
+    },
+    contract:{id:runCore.contract.contract_id,version:runCore.contract.version,sha256:runCore.contract_sha256},
+    execution:{
+      difference_count:runCore.diffs.length,
+      missing_required_differences:runCore.missing_required,
+      assertion_count:runCore.stats.assertions,
+      passed:runCore.stats.passed,
+      review_required:runCore.stats.review
+    },
+    result:{state:runCore.decision}
+  };
+  const receipt_sha256=await sha256Text(canonicalString(body));
+  return {...body,receipt_sha256};
+}
+
+async function runVerification(){
+  setStatus("RUNNING","warn");
+  try{
+    const [baseline,candidate] = await Promise.all([parseSide("baseline"),parseSide("candidate")]);
+    const contract=getContract();
+    const profile=$("#profileSelect").value;
+    contract.comparison = contract.comparison || {};
+    contract.comparison.profile = profile;
+    const contract_sha256=await sha256Text(canonicalString(contract));
+
+    let diffs=[];
+    if(profile==="schema"){
+      const schema=inferSchema(baseline.canonical);
+      diffs=schemaDiff(schema,candidate.canonical,"",[],contract);
+    }else{
+      diffs=compareValues(baseline.canonical,candidate.canonical,profile,contract,"",[]);
+    }
+    diffs=diffs.filter(d=>d.disposition!=="IGNORED");
+
+    const missing_required=evaluateRequiredDifferences(diffs,contract);
+    const decision=deriveDecision(diffs,missing_required);
+    const stats=assertionStats(diffs,missing_required);
+    const verification_id="LV-"+Date.now().toString(36).toUpperCase()+"-"+cryptoRandom(6);
+    const timestamp=nowIso();
+
+    const core={verification_id,timestamp,profile,baseline,candidate,contract,contract_sha256,diffs,missing_required,decision,stats};
+    const receipt=await buildReceipt(core);
+    lastRun={...core,receipt};
+
+    renderRun(lastRun);
+    if(contract.evidence_policy?.ledger_write !== false) await ledgerPut(lastRun);
+    setStatus(decision, decision==="MATCH"?"good":decision==="DIFFERENT"?"bad":"warn");
+  }catch(err){
+    lastRun=null;
+    renderHalt(err);
+    setStatus("HALT","bad");
+  }
+}
+
+function cryptoRandom(n){
+  const a=new Uint8Array(n); crypto.getRandomValues(a);
+  return [...a].map(x=>(x%36).toString(36)).join("").toUpperCase();
+}
+
+function setStatus(text,kind=""){
+  const b=$("#statusBadge"); b.textContent=text; b.className="badge "+kind;
+}
+
+function renderHalt(err){
+  $("#resultState").textContent="HALT";
+  $("#resultState").className="resultState bad";
+  $("#resultSummary").textContent=err.message || String(err);
+  $("#statAssertions").textContent="0";
+  $("#statPassed").textContent="0";
+  $("#statDiffs").textContent="0";
+  $("#statReview").textContent="0";
+  $("#diffBody").innerHTML=`<tr><td colspan="5"><span class="badge bad">HALT</span> ${escapeHtml(err.message || String(err))}</td></tr>`;
+  $("#receiptView").textContent="No receipt generated.";
+}
+
+function renderRun(run){
+  const cls=run.decision==="MATCH"?"good":run.decision==="DIFFERENT"?"bad":"warn";
+  $("#resultState").textContent=run.decision;
+  $("#resultState").className="resultState "+cls;
+  $("#resultSummary").textContent =
+    run.decision==="MATCH" ? "Verification contract satisfied." :
+    run.decision==="DIFFERENT" ? "Defined differences were detected." :
+    "One or more differences require review.";
+
+  $("#statAssertions").textContent=run.stats.assertions;
+  $("#statPassed").textContent=run.stats.passed;
+  $("#statDiffs").textContent=run.diffs.length + run.missing_required.length;
+  $("#statReview").textContent=run.stats.review;
+
+  renderDiffs();
+  $("#receiptView").textContent=JSON.stringify(run.receipt,null,2);
+  $("#receiptVerifyStatus").textContent="Receipt generated. Select Verify receipt to recompute its digest.";
+}
+
+function renderDiffs(){
+  const body=$("#diffBody");
+  if(!lastRun){ body.innerHTML='<tr><td colspan="5" class="muted">No verification result.</td></tr>'; return; }
+  const q=$("#diffFilter").value.toLowerCase();
+  const rows=[...lastRun.diffs.map(d=>({...d,missingRequired:false})),
+    ...lastRun.missing_required.map(p=>({class:"REQUIRED_DIFFERENCE_MISSING",path:p,baseline:"difference required",candidate:"no matching difference",disposition:"PROHIBITED",missingRequired:true}))
+  ].filter(d=>!q || d.path.toLowerCase().includes(q) || d.class.toLowerCase().includes(q) || d.disposition.toLowerCase().includes(q));
+
+  if(!rows.length){ body.innerHTML='<tr><td colspan="5" class="muted">No differences.</td></tr>'; return; }
+  body.innerHTML=rows.map(d=>`<tr>
+    <td>${escapeHtml(d.class)}</td>
+    <td class="mono">${escapeHtml(d.path)}</td>
+    <td class="mono">${escapeHtml(preview(d.baseline))}</td>
+    <td class="mono">${escapeHtml(preview(d.candidate))}</td>
+    <td><span class="badge ${d.disposition==="PERMITTED"?"good":d.disposition==="REVIEW"?"warn":"bad"}">${escapeHtml(d.disposition)}</span></td>
+  </tr>`).join("");
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+async function verifyCurrentReceipt(){
+  if(!lastRun?.receipt){ $("#receiptVerifyStatus").textContent="No receipt available."; return; }
+  const r={...lastRun.receipt};
+  const expected=r.receipt_sha256;
+  delete r.receipt_sha256;
+  const actual=await sha256Text(canonicalString(r));
+  const ok=actual===expected;
+  $("#receiptVerifyStatus").textContent=ok
+    ? `VALID\nreceipt_sha256=${expected}`
+    : `INVALID\nexpected=${expected}\nactual=${actual}`;
+}
+
+function downloadText(filename,text,type="application/json"){
+  const blob=new Blob([text],{type});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=filename;a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function evidenceObject(){
+  if(!lastRun) throw new Error("No verification run available.");
+  return {
+    manifest:{
+      artifact:"LATENT_VERIFY_EVIDENCE_PACKAGE",
+      version:"1.0",
+      exported_at:nowIso(),
+      verification_id:lastRun.verification_id
+    },
+    receipt:lastRun.receipt,
+    contract:lastRun.contract,
+    differences:lastRun.diffs,
+    missing_required_differences:lastRun.missing_required
+  };
+}
+
+function exportEvidence(){
+  try{
+    const ev=evidenceObject();
+    downloadText(`${lastRun.verification_id}-evidence.json`,JSON.stringify(ev,null,2));
+  }catch(e){ alert(e.message); }
+}
+
+function exportReport(){
+  try{
+    const ev=evidenceObject();
+    const rows=[...lastRun.diffs,...lastRun.missing_required.map(p=>({class:"REQUIRED_DIFFERENCE_MISSING",path:p,baseline:"difference required",candidate:"none",disposition:"PROHIBITED"}))]
+      .map(d=>`<tr><td>${escapeHtml(d.class)}</td><td>${escapeHtml(d.path)}</td><td>${escapeHtml(preview(d.baseline))}</td><td>${escapeHtml(preview(d.candidate))}</td><td>${escapeHtml(d.disposition)}</td></tr>`).join("");
+    const report=`<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Latent Verify V${VERSION}">
+<title>Latent Verify Report — ${escapeHtml(lastRun.verification_id)}</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:2rem;max-width:1100px;line-height:1.45}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #aaa;padding:6px;text-align:left;vertical-align:top}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+</style>
+</head>
+<body>
+<h1>Latent Verify Report</h1>
+<p><b>Verification:</b> ${escapeHtml(lastRun.verification_id)}</p>
+<p><b>Result:</b> ${escapeHtml(lastRun.decision)}</p>
+<p><b>Profile:</b> ${escapeHtml(lastRun.profile)}</p>
+<p><b>Receipt:</b> <code>${escapeHtml(lastRun.receipt.receipt_sha256)}</code></p>
+<h2>Differences</h2>
+<table>
+<thead><tr><th>Class</th><th>Path</th><th>Baseline</th><th>Candidate</th><th>Disposition</th></tr></thead>
+<tbody>${rows||'<tr><td colspan="5">None</td></tr>'}</tbody>
+</table>
+<h2>Receipt</h2>
+<pre>${escapeHtml(JSON.stringify(lastRun.receipt,null,2))}</pre>
+</body>
+</html>`;
+    downloadText(`${lastRun.verification_id}-report.html`,report,"text/html;charset=utf-8");
+  }catch(e){ alert(e.message); }
+}
+
+function validateContract(){
+  try{
+    const c=JSON.parse($("#contractText").value);
+    const errs=validateContractObject(c);
+    if(errs.length) throw new Error(errs.join("\n"));
+    $("#contractStatus").textContent="VALID\n"+canonicalString(c);
+    return true;
+  }catch(e){
+    $("#contractStatus").textContent="INVALID\n"+e.message;
+    return false;
+  }
+}
+
+async function readFileInto(side,file){
+  if(!file) return;
+  const text=await file.text();
+  $("#"+side+"Text").value=text;
+  updateSideMeta(side,file.name);
+}
+
+async function updateSideMeta(side,filename=""){
+  const text=$("#"+side+"Text").value;
+  if(!text.trim()){
+    $("#"+side+"Type").textContent="UNSET";
+    $("#"+side+"Meta").textContent="No input loaded.";
+    return;
+  }
+  try{
+    const p=parseInput(text,filename);
+    const h=await sha256Text(text);
+    $("#"+side+"Type").textContent=p.format;
+    $("#"+side+"Meta").textContent=`${new TextEncoder().encode(text).length} bytes · raw sha256 ${h.slice(0,16)}…`;
+  }catch(e){
+    $("#"+side+"Type").textContent="INVALID";
+    $("#"+side+"Meta").textContent=e.message;
+  }
+}
+
+function loadSample(diff=false){
+  $("#baselineText").value=JSON.stringify(SAMPLE_MATCH_BASELINE,null,2);
+  $("#candidateText").value=JSON.stringify(diff?SAMPLE_DIFF_CANDIDATE:SAMPLE_MATCH_CANDIDATE,null,2);
+  $("#profileSelect").value="exact";
+  $("#contractText").value=JSON.stringify(DEFAULT_CONTRACT,null,2);
+  updateSideMeta("baseline");
+  updateSideMeta("candidate");
+  setStatus("READY","");
+}
+
+function openTab(name){
+  $$(".tabPage").forEach(x=>x.classList.add("hidden"));
+  $("#tab-"+name).classList.remove("hidden");
+  $$("#tabs button").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
+  if(name==="ledger") renderLedger();
+}
+
+function initDb(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open(DB_NAME,1);
+    req.onupgradeneeded=()=>{
+      const d=req.result;
+      if(!d.objectStoreNames.contains(DB_STORE)) d.createObjectStore(DB_STORE,{keyPath:"verification_id"});
+    };
+    req.onsuccess=()=>{ db=req.result; $("#dbBadge").textContent="LEDGER READY"; $("#dbBadge").className="badge good"; resolve(db); };
+    req.onerror=()=>{ $("#dbBadge").textContent="LEDGER UNAVAILABLE"; $("#dbBadge").className="badge warn"; reject(req.error); };
+  });
+}
+
+function ledgerPut(run){
+  if(!db) return Promise.resolve();
+  const record={
+    verification_id:run.verification_id,
+    timestamp:run.timestamp,
+    result:run.decision,
+    profile:run.profile,
+    receipt_sha256:run.receipt.receipt_sha256,
+    baseline_sha256:run.receipt.baseline.canonical_sha256,
+    candidate_sha256:run.receipt.candidate.canonical_sha256,
+    receipt:run.receipt
+  };
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(DB_STORE,"readwrite");
+    tx.objectStore(DB_STORE).put(record);
+    tx.oncomplete=()=>resolve();
+    tx.onerror=()=>reject(tx.error);
+  });
+}
+
+function ledgerAll(){
+  if(!db) return Promise.resolve([]);
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(DB_STORE,"readonly");
+    const req=tx.objectStore(DB_STORE).getAll();
+    req.onsuccess=()=>resolve(req.result.sort((a,b)=>b.timestamp.localeCompare(a.timestamp)));
+    req.onerror=()=>reject(req.error);
+  });
+}
+
+async function renderLedger(){
+  const root=$("#ledgerList");
+  try{
+    const rows=await ledgerAll();
+    if(!rows.length){ root.innerHTML='<div class="muted">No local verification records.</div>'; return; }
+    root.innerHTML=rows.map(r=>`<div class="card">
+      <div class="row spread">
+        <div><b>${escapeHtml(r.verification_id)}</b><div class="small muted">${escapeHtml(r.timestamp)}</div></div>
+        <span class="badge ${r.result==="MATCH"?"good":r.result==="DIFFERENT"?"bad":"warn"}">${escapeHtml(r.result)}</span>
+      </div>
+      <div class="kv"><span>Profile</span><span>${escapeHtml(r.profile)}</span></div>
+      <div class="kv"><span>Receipt</span><span class="mono">${escapeHtml(r.receipt_sha256)}</span></div>
+    </div>`).join("");
+  }catch(e){ root.textContent="Ledger error: "+e.message; }
+}
+
+async function clearLedger(){
+  if(!db) return;
+  if(!confirm("Clear all local Latent Verify ledger records from this browser?")) return;
+  await new Promise((resolve,reject)=>{
+    const tx=db.transaction(DB_STORE,"readwrite");
+    tx.objectStore(DB_STORE).clear();
+    tx.oncomplete=resolve;
+    tx.onerror=()=>reject(tx.error);
+  });
+  renderLedger();
+}
+
+
+function authorityProfileVersion(){
+  return "1.0";
+}
+
+function buildAuthorityEnvelope(action,{receipt_sha256=null}={}){
+  const account_license_id=$("#authorityAccountId").value.trim();
+  if(!account_license_id) throw new Error("Account/license ID is required.");
+
+  const envelope={
+    protocol:"LV-AUTH-1",
+    action,
+    account_license_id,
+    profile_id:$("#profileSelect").value,
+    profile_version:authorityProfileVersion(),
+    timestamp:nowIso(),
+    nonce:cryptoRandom(16)
+  };
+
+  if(receipt_sha256!==null){
+    if(!/^[0-9a-f]{64}$/i.test(receipt_sha256)){
+      throw new Error("receipt_sha256 must be a 64-character SHA-256 hex digest.");
+    }
+    envelope.receipt_sha256=receipt_sha256.toLowerCase();
+  }
+
+  assertAuthorityEnvelope(envelope);
+  return envelope;
+}
+
+function assertAuthorityEnvelope(envelope){
+  const keys=Object.keys(envelope);
+
+  for(const key of keys){
+    if(!AUTHORITY_REQUEST_KEYS.includes(key)){
+      throw new Error(`Authority envelope field not allowed: ${key}`);
+    }
+    if(AUTHORITY_FORBIDDEN_FIELD_NAMES.includes(key.toLowerCase())){
+      throw new Error(`Validation-data field prohibited from authority plane: ${key}`);
+    }
+  }
+
+  for(const key of ["protocol","action","account_license_id","profile_id","profile_version","timestamp","nonce"]){
+    if(typeof envelope[key]!=="string" || !envelope[key]){
+      throw new Error(`Authority envelope requires non-empty string: ${key}`);
+    }
+  }
+
+  if(envelope.protocol!=="LV-AUTH-1") throw new Error("Unsupported authority protocol.");
+  if(!["ACCESS_AUTHORIZATION","CERTIFICATE_ISSUANCE"].includes(envelope.action)) throw new Error("Unsupported authority action.");
+  if(Number.isNaN(Date.parse(envelope.timestamp))) throw new Error("Authority timestamp must be valid ISO-8601.");
+  if(!/^[0-9A-Z]{16}$/.test(envelope.nonce)) throw new Error("Authority nonce must be a 16-character uppercase alphanumeric token.");
+  if(envelope.action==="ACCESS_AUTHORIZATION" && "receipt_sha256" in envelope) throw new Error("Access authorization must not include receipt_sha256.");
+  if(envelope.action==="CERTIFICATE_ISSUANCE" && !/^[0-9a-f]{64}$/i.test(envelope.receipt_sha256 || "")) throw new Error("Certificate issuance requires receipt_sha256.");
+
+  const encoded=JSON.stringify(envelope);
+  for(const forbidden of AUTHORITY_FORBIDDEN_FIELD_NAMES){
+    if(new RegExp(`"${forbidden}"\s*:`, "i").test(encoded)){
+      throw new Error(`Forbidden validation-data field detected in authority serialization: ${forbidden}`);
+    }
+  }
+
+  return true;
+}
+
+function renderAuthorityEnvelope(envelope){
+  $("#authorityEnvelopeView").textContent=JSON.stringify(envelope,null,2);
+}
+
+function renderAuthorityResponse(response){
+  $("#authorityResponseView").textContent=JSON.stringify(response,null,2);
+
+  const decision=response?.decision || "UNKNOWN";
+  $("#authorityBadge").textContent=decision==="ALLOW"?"AUTHORIZED":decision==="DENY"?"DENIED":"AUTHORITY RESPONSE";
+  $("#authorityBadge").className="badge "+(decision==="ALLOW"?"good":decision==="DENY"?"bad":"warn");
+
+  if(response?.entitlement){
+    $("#authorityRemaining").textContent=
+      response.entitlement.remaining===null || response.entitlement.remaining===undefined
+        ? "UNLIMITED"
+        : String(response.entitlement.remaining);
+    $("#authorityExpiry").textContent=response.entitlement.expires_at || "NONE";
+  }
+}
+
+function setAuthorityAvailability(){
+  $("#authorityProfile").textContent=`${$("#profileSelect").value} / ${authorityProfileVersion()}`;
+  if(AUTHORITY_CONFIG.enabled){
+    $("#authorityBadge").textContent="AUTHORITY READY";
+    $("#authorityBadge").className="badge good";
+  }else{
+    $("#authorityBadge").textContent="AUTHORITY OFFLINE";
+    $("#authorityBadge").className="badge warn";
+  }
+}
+
+async function authorityFetch(route,envelope){
+  assertAuthorityEnvelope(envelope);
+  renderAuthorityEnvelope(envelope);
+
+  if(!AUTHORITY_CONFIG.enabled){
+    throw new Error(
+      "Authority service is disabled in this deployment. Local verification remains fully available."
+    );
+  }
+
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),AUTHORITY_CONFIG.timeout_ms);
+
+  try{
+    const response=await fetch(
+      AUTHORITY_CONFIG.base_path+route,
+      {
+        method:"POST",
+        headers:{
+          "content-type":"application/json",
+          "accept":"application/json"
+        },
+        credentials:"same-origin",
+        cache:"no-store",
+        referrerPolicy:"no-referrer",
+        body:JSON.stringify(envelope),
+        signal:controller.signal
+      }
+    );
+
+    let body=null;
+    try{
+      body=await response.json();
+    }catch{
+      throw new Error(`Authority service returned non-JSON response (${response.status}).`);
+    }
+
+    if(!response.ok){
+      const msg=body?.error || body?.message || `Authority request failed (${response.status}).`;
+      throw new Error(msg);
+    }
+
+    renderAuthorityResponse(body);
+    return body;
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
+async function authorizeAccess(){
+  try{
+    const envelope=buildAuthorityEnvelope("ACCESS_AUTHORIZATION");
+    const response=await authorityFetch("/authorize",envelope);
+
+    if(response.decision!=="ALLOW"){
+      throw new Error(response?.reason || "Access authorization denied.");
+    }
+
+    localStorage.setItem("latent_verify_authority_account_id",envelope.account_license_id);
+  }catch(e){
+    $("#authorityResponseView").textContent="AUTHORITY ERROR\n"+e.message;
+    $("#authorityBadge").textContent="AUTHORITY OFFLINE";
+    $("#authorityBadge").className="badge warn";
+  }
+}
+
+async function requestAuthoritativeCertificate(){
+  try{
+    if(!lastRun?.receipt?.receipt_sha256){
+      throw new Error("Run a local verification before requesting certificate issuance.");
+    }
+
+    const envelope=buildAuthorityEnvelope(
+      "CERTIFICATE_ISSUANCE",
+      {receipt_sha256:lastRun.receipt.receipt_sha256}
+    );
+
+    const response=await authorityFetch("/certificates",envelope);
+
+    if(response.decision!=="ALLOW"){
+      throw new Error(response?.reason || "Certificate issuance denied.");
+    }
+
+    if(!response.certificate || typeof response.certificate!=="object"){
+      throw new Error("Authority response did not include a certificate object.");
+    }
+
+    if(response.certificate.receipt_sha256!==lastRun.receipt.receipt_sha256){
+      throw new Error("Issued certificate does not bind to the current local receipt.");
+    }
+
+    $("#certificateText").value=JSON.stringify(response.certificate,null,2);
+    openTab("certificate");
+    await verifyCertificateBinding();
+  }catch(e){
+    $("#authorityResponseView").textContent="AUTHORITY ERROR\n"+e.message;
+  }
+}
+
+function restoreAuthorityAccount(){
+  const saved=localStorage.getItem("latent_verify_authority_account_id");
+  if(saved) $("#authorityAccountId").value=saved;
+}
+
+async function loadCertificateFile(file){
+  if(!file) return;
+  $("#certificateText").value=await file.text();
+}
+
+async function verifyCertificateBinding(){
+  try{
+    if(!lastRun) throw new Error("Run a verification first so the certificate can bind to a local receipt.");
+    const cert=JSON.parse($("#certificateText").value);
+    if(!cert.certificate_id) throw new Error("certificate_id is required.");
+    if(!cert.receipt_sha256) throw new Error("receipt_sha256 is required.");
+    const receiptMatch=cert.receipt_sha256===lastRun.receipt.receipt_sha256;
+    const verificationMatch=!cert.verification_id || cert.verification_id===lastRun.verification_id;
+    const ok=receiptMatch && verificationMatch;
+    $("#certBadge").textContent=ok?"BOUND":"MISMATCH";
+    $("#certBadge").className="badge "+(ok?"good":"bad");
+    $("#certificateStatus").textContent=ok
+      ? `BOUND\ncertificate_id=${cert.certificate_id}\nreceipt_sha256=${cert.receipt_sha256}\nNote: V1 verifies evidence binding only; cryptographic issuer signatures are not asserted by this workstation.`
+      : `MISMATCH\ncurrent_receipt=${lastRun.receipt.receipt_sha256}\ncertificate_receipt=${cert.receipt_sha256}`;
+  }catch(e){
+    $("#certBadge").textContent="INVALID";
+    $("#certBadge").className="badge bad";
+    $("#certificateStatus").textContent="INVALID\n"+e.message;
+  }
+}
+
+function wire(){
+  $("#contractText").value=JSON.stringify(DEFAULT_CONTRACT,null,2);
+
+  $$("#tabs button").forEach(b=>b.addEventListener("click",()=>openTab(b.dataset.tab)));
+  $("#verifyBtn").addEventListener("click",runVerification);
+  $("#validateContract").addEventListener("click",validateContract);
+  $("#validateContract2").addEventListener("click",validateContract);
+  $("#resetContract").addEventListener("click",()=>{$("#contractText").value=JSON.stringify(DEFAULT_CONTRACT,null,2);validateContract();});
+  $("#loadMatchSample").addEventListener("click",()=>loadSample(false));
+  $("#loadDiffSample").addEventListener("click",()=>loadSample(true));
+  $("#diffFilter").addEventListener("input",renderDiffs);
+  $("#exportEvidence").addEventListener("click",exportEvidence);
+  $("#exportReport").addEventListener("click",exportReport);
+  $("#verifyReceiptBtn").addEventListener("click",verifyCurrentReceipt);
+  $("#refreshLedger").addEventListener("click",renderLedger);
+  $("#clearLedger").addEventListener("click",clearLedger);
+  $("#verifyCertificate").addEventListener("click",verifyCertificateBinding);
+  $("#authorizeAccessBtn").addEventListener("click",authorizeAccess);
+  $("#requestCertificateBtn").addEventListener("click",requestAuthoritativeCertificate);
+  $("#requestCertificateFromCertTab").addEventListener("click",requestAuthoritativeCertificate);
+  $("#authorityAccountId").addEventListener("change",()=>{
+    const v=$("#authorityAccountId").value.trim();
+    if(v) localStorage.setItem("latent_verify_authority_account_id",v);
+    else localStorage.removeItem("latent_verify_authority_account_id");
+  });
+  $("#certificateFile").addEventListener("change",e=>loadCertificateFile(e.target.files[0]));
+
+  ["baseline","candidate"].forEach(side=>{
+    $("#"+side+"File").addEventListener("change",e=>readFileInto(side,e.target.files[0]));
+    $("#"+side+"Text").addEventListener("input",()=>updateSideMeta(side));
+    $(`[data-clear="${side}"]`).addEventListener("click",()=>{
+      $("#"+side+"Text").value="";
+      $("#"+side+"File").value="";
+      updateSideMeta(side);
+    });
+    const dz=$(`.dropzone[data-side="${side}"]`);
+    ["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("drag");}));
+    ["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("drag");}));
+    dz.addEventListener("drop",e=>{
+      const f=e.dataTransfer.files[0];
+      if(f) readFileInto(side,f);
+    });
+  });
+
+  $("#profileSelect").addEventListener("change",()=>{
+    try{
+      const c=JSON.parse($("#contractText").value);
+      c.comparison=c.comparison||{};
+      c.comparison.profile=$("#profileSelect").value;
+      $("#contractText").value=JSON.stringify(c,null,2);
+    }catch{}
+    setAuthorityAvailability();
+  });
+}
+
+async function boot(){
+  wire();
+  try{ await initDb(); }catch{}
+  loadSample(false);
+  validateContract();
+  restoreAuthorityAccount();
+  setAuthorityAvailability();
+  setStatus("READY","good");
+}
+
+boot();
+</script>
+</body>
+</html>
